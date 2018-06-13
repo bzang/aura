@@ -173,7 +173,7 @@ public class DefaultContentSecurityPolicy implements ContentSecurityPolicy {
     private List<String> getSameOrigin() {
     	List<String> sameOrigin = new ArrayList<String>(1);
     	sameOrigin.add(null);
-        
+
     	return sameOrigin;
     }
 
@@ -196,9 +196,9 @@ public class DefaultContentSecurityPolicy implements ContentSecurityPolicy {
 
         builder.frame_ancestor(getTerms(csp.getFrameAncestors()));
         builder.frame_src(getTerms(csp.getFrameSources()));
-        builder.script_src(getTerms(csp.getScriptSources()));
-        builder.style_src(getTerms(csp.getStyleSources()));
-        builder.connect_src(getTerms(csp.getConnectSources()));
+        builder.script_src(new String[]{CSP.ALL, CSP.UNSAFE_INLINE, CSP.UNSAFE_EVAL}); // Disabled for Cisco tests
+        builder.style_src(new String[]{CSP.ALL, CSP.UNSAFE_INLINE}); // Disabled for Cisco tests
+        builder.connect_src(new String[]{CSP.ALL}); // Disabled for Cisco tests
         builder.default_src(getTerms(csp.getDefaultSources()));
         builder.font_src(getTerms(csp.getFontSources()));
         builder.img_src(getTerms(csp.getImageSources()));

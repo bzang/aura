@@ -381,7 +381,7 @@ public class ConfigAdapterImpl implements ConfigAdapter {
     public String getAuraJSURL() {
     		return contextService.getCurrentContext().getContextPath() + getAuraJSURLPath();
     }
-    
+
     protected String getAuraJSURLPath() {
         AuraContext context = contextService.getCurrentContext();
         String suffix = context.getMode().getJavascriptMode().getSuffix();
@@ -713,12 +713,14 @@ public class ConfigAdapterImpl implements ConfigAdapter {
 
     @Override
     public boolean isStrictCSPEnforced() {
-        return true;
+        // return true; // Disabled for Cisco tests
+        return false;
     }
 
     @Override
     public boolean isFrozenRealmEnabled() {
-        return true;
+        // return true; // Disabled for Cisco tests
+        return false;
     }
 
     @Override
@@ -825,10 +827,10 @@ public class ConfigAdapterImpl implements ConfigAdapter {
     public String getCDNDomain() {
         return null;
     }
-    
+
     @Override
     public boolean uriAddressableDefsEnabled() {
-        return true;	
+        return true;
     }
 
     @Override
